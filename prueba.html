@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mini CAMS - Pronóstico Contaminantes</title>
+
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+<style>
+  body { font-family: Arial, sans-serif; margin: 20px; }
+  #map { width: 100%; max-width: 700px; height: 450px; margin-bottom: 10px; }
+  #info { margin-top: 10px; font-weight: bold; }
+  .legend { margin-top: 10px; }
+  select, button, input[type=range] { margin: 5px; }
+</style>
+</head>
+<body>
+
+<h2>Mini CAMS - Pronóstico de Contaminantes</h2>
+
+<label for="region">Selecciona Región:</label>
+<select id="region">
+  <option value="europa">Europeo</option>
+  <option value="global">Global</option>
+</select>
+
+<label for="contaminante">Selecciona Contaminante:</label>
+<select id="contaminante"></select>
+
+<div class="legend" id="leyenda">Leyenda: --- </div>
+
+<div id="map">Cargando mapa...</div>
+
+<label for="sliderHora">Hora (pronóstico): <span id="horaLabel">0</span></label><br />
+<input type="range" id="sliderHora" min="0" max="23" value="0" />
+
+<br/>
+<button id="btnAnimar">Play</button>
+
+<div id="info">Haz clic en el mapa para ver el valor aquí.</div>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+  // Contaminantes y leyendas
+  const contaminantesPorRegion = {
+    europa: ['NO2', 'O3', 'PM2.5'],
+    global: ['CO', 'SO2', 'PM10', 'UVIndex']
+  };
+
+  const leyendas = {
+    'PM2.5': 'Partículas finas (PM2.5) en μg/m³',
+    'NO2': 'Dióxido de nitrógeno (NO2) en μg/m³',
+    'O3': 'Ozono (O3) en μg/m³',
+    'CO': 'Monóxido de carbono (CO) en μg/m³',
+    'SO2': 'Dióxido de azufre (SO2) en μg/m³',
+    'PM10': 'Partículas (PM10) en μg/m³',
+    'UVIndex': 'Índice Ultravioleta (adimensional)'
+  };
+
+  const wmsInfo = {
+    europa: {
+      url: 'https://eccharts.ecmwf.int/wms/?token=public',
+      layers: {
+        'NO2': 'composition_europe_no2_forecast_surface',
+        'O3': 'composition_europe_o3_forecast_surface',
+        'PM2.5': 'composition_europe_pm2p5_forecast_surface'
+      }
+    },
+    global: {
+      url: 'https://eccharts.ecmwf.int/wms/?token=public',
+      layers: {
+        'CO': 'composition_co_surface',
+        'SO2': 'composition_so2_surface',
+        'PM10': 'composition_pm10',
+        'UVIndex': 'composition_uvindex'
+      }
+    }
+  };
+
+  const regionCenters = { europa: [52.52, 13.405], global: [20, 0] };
+  const regionZoom = { europa: 5, global: 3 };
+
+  const regionSelect = document.getElementById('region');
+  const contaminanteSelect = document.getElementById('contaminante');
+  const leyendaDiv = document.getElementById('leyenda');
+  const infoDiv = document.getElementById('info');
+  const sliderHora = document.getElementById('sliderHora');
+  const horaLabel = document.getElementById('horaLabel');
+  const btnAnimar = document.getElementById('btnAnimar');
+
+  // Crear mapa base
+  const map = L.map('map').setView(regionCenters.europa, regionZoom.europa);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  let wmsLayer = null;
+
+  // Generar horas disponibles
+  const horasDisponibles = Array.from({ length: 24 }, (_, i) => {
+    const fecha = new Date();
+    fecha.setUTCHours(fecha.getUTCHours() + i);
+    fecha.setUTCMinutes(0, 0, 0);
+    return fecha.toISOString();
+  });
+
+  // Función para actualizar capa WMS
+  function actualizarCapa() {
+    const region = regionSelect.value;
+    const contaminante = contaminanteSelect.value;
+    const horaIndex = parseInt(sliderHora.value);
+
+    if (wmsLayer) map.removeLayer(wmsLayer);
+    if (!contaminante) return;
+
+    const wmsUrl = wmsInfo[region].url;
+    const layerName = wmsInfo[region].layers[contaminante];
+    const timeISO = horasDisponibles[horaIndex];
+
+    wmsLayer = L.tileLayer.wms(wmsUrl, {
+      layers: layerName,
+      format: 'image/png',
+      transparent: true,
+      opacity: 0.6,
+      time: timeISO,
+      attribution: 'CAMS - Copernicus Atmosphere Monitoring Service'
+    }).addTo(map);
+
+    leyendaDiv.textContent = `Leyenda: ${leyendas[contaminante]} (Hora UTC: ${new Date(timeISO).getUTCHours()}:00)`;
+  }
+
+  // Cambiar lista de contaminantes según región
+  function actualizarContaminantes() {
+    const region = regionSelect.value;
+    contaminanteSelect.innerHTML = '';
+    contaminantesPorRegion[region].forEach(c => {
+      const opt = document.createElement('option');
+      opt.value = c;
+      opt.textContent = c;
+      contaminanteSelect.appendChild(opt);
+    });
+    map.setView(regionCenters[region], regionZoom[region]);
+    actualizarCapa();
+  }
+
+  // Animación del tiempo
+  let animando = false;
+  let animInterval = null;
+  btnAnimar.addEventListener('click', () => {
+    if (!animando) {
+      animando = true;
+      btnAnimar.textContent = 'Stop';
+      animInterval = setInterval(() => {
+        sliderHora.value = (parseInt(sliderHora.value) + 1) % 24;
+        horaLabel.textContent = sliderHora.value;
+        actualizarCapa();
+      }, 1000);
+    } else {
+      animando = false;
+      btnAnimar.textContent = 'Play';
+      clearInterval(animInterval);
+    }
+  });
+
+  // Cambios manuales
+  sliderHora.addEventListener('input', () => {
+    horaLabel.textContent = sliderHora.value;
+    actualizarCapa();
+  });
+
+  regionSelect.addEventListener('change', actualizarContaminantes);
+  contaminanteSelect.addEventListener('change', actualizarCapa);
+
+  // 🔹 Obtener valor real con GetFeatureInfo
+  async function getValueFromLayer(layer, latlng, date) {
+    const wmsUrl = "https://eccharts.ecmwf.int/wms/?token=public";
+
+    // Bounding box pequeño alrededor del punto
+    const delta = 0.1; 
+    const bbox = [
+      latlng.lng - delta,
+      latlng.lat - delta,
+      latlng.lng + delta,
+      latlng.lat + delta
+    ].join(",");
+
+    // Construir URL de GetFeatureInfo
+    const url = `${wmsUrl}&service=WMS&version=1.3.0&request=GetFeatureInfo` +
+                `&layers=${layer}&query_layers=${layer}` +
+                `&crs=EPSG:4326&bbox=${bbox}` +
+                `&width=101&height=101&info_format=text/plain` +
+                `&i=50&j=50&time=${date}`;
+
+    console.log("URL GetFeatureInfo:", url);
+
+    try {
+      const response = await fetch(url);
+      const text = await response.text();
+      console.log("Respuesta GetFeatureInfo:", text);
+
+      const match = text.match(/Value:\s*([0-9.+-eE]+)/);
+      if (match) {
+        return parseFloat(match[1]);
+      } else {
+        return null;
+      }
+    } catch (error) {
+      console.error("Error en GetFeatureInfo:", error);
+      return null;
+    }
+  }
+
+  // 🔹 Evento clic en el mapa → consulta real
+  map.on('click', async e => {
+    const { lat, lng } = e.latlng;
+    const contaminante = contaminanteSelect.value;
+    const region = regionSelect.value;
+    const layerName = wmsInfo[region].layers[contaminante];
+    const horaIndex = parseInt(sliderHora.value);
+    const fechaISO = horasDisponibles[horaIndex];
+
+    const valor = await getValueFromLayer(layerName, e.latlng, fechaISO);
+
+    if (valor !== null) {
+      infoDiv.textContent = `Valor en (${lat.toFixed(3)}, ${lng.toFixed(3)}): ${valor} (${leyendas[contaminante]})`;
+    } else {
+      infoDiv.textContent = `No se pudo obtener valor en (${lat.toFixed(3)}, ${lng.toFixed(3)})`;
+    }
+  });
+
+  // Inicializar
+  actualizarContaminantes();
+  horaLabel.textContent = sliderHora.value;
+</script>
+</body>
+</html>
