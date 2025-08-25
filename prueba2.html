@@ -177,29 +177,43 @@
     }
   });
 
-  function actualizarCapa(){
-    const region=regionSelect.value;
-    const contaminante=contaminanteSelect.value;
-    const horaIndex=parseInt(sliderHora.value);
-    if(wmsLayer) map.removeLayer(wmsLayer);
-    if(!contaminante) return;
-    const wmsUrl=wmsInfo[region].url;
-    const layerName=wmsInfo[region].layers[contaminante];
-    const timeISO=horasDisponibles[horaIndex];
-    const styleName=getLayerStyleByType(contaminante);
-    wmsLayer=L.tileLayer.wms(wmsUrl,{
-      layers:layerName,
-      format:'image/png',
-      transparent:true,
-      opacity:0.6,
-      time:timeISO,
-      attribution:'CAMS - Copernicus Atmosphere Monitoring Service'
-    }).addTo(map);
-    if(styleName) wmsLayer.setParams({styles:styleName});
-    const fecha=new Date(timeISO);
-    const label=fecha.toLocaleDateString('es-ES',{weekday:'short',day:'numeric'});
-    leyendaDiv.textContent=`Leyenda: ${leyendas[contaminante]} (Hora UTC: ${fecha.getUTCHours()}:00)`;
-    horaLabel.textContent=label;
+  function actualizarCapa() {
+      const region = regionSelect.value;
+      const contaminante = contaminanteSelect.value;
+      const horaIndex = parseInt(sliderHora.value);
+      if (!contaminante) return;
+
+      if (wmsLayer) map.removeLayer(wmsLayer);
+
+      let fecha = new Date(horasDisponibles[horaIndex]);
+
+      // si la región es global, redondeamos hora al múltiplo de 3
+      if (region === 'global') {
+          const h = getHour3(fecha.getUTCHours());
+          fecha.setUTCHours(h, 0, 0, 0);
+      }
+
+      const timeISO = fecha.toISOString();
+      const wmsUrl = wmsInfo[region].url;
+      const layerName = wmsInfo[region].layers[contaminante];
+      const styleName = getLayerStyleByType(contaminante);
+
+      wmsLayer = L.tileLayer.wms(wmsUrl, {
+          layers: layerName,
+          format: 'image/png',
+          transparent: true,
+          opacity: 0.6,
+          time: timeISO,
+          attribution: 'CAMS - Copernicus Atmosphere Monitoring Service'
+      }).addTo(map);
+
+      if (styleName) {
+          wmsLayer.setParams({ styles: styleName });
+      }
+
+      const label = fecha.toLocaleDateString('es-ES', { weekday: 'short', day: 'numeric' });
+      leyendaDiv.textContent = `Leyenda: ${leyendas[contaminante]} (Hora UTC: ${fecha.getUTCHours()}:00)`;
+      horaLabel.textContent = label;
   }
 
   function actualizarContaminantes(){
@@ -273,6 +287,10 @@
       series:[{name:contaminanteSelect.value,data:data,turboThreshold:0}],
       credits:{enabled:false}, exporting:{enabled:true}, accessibility:{enabled:false}
     });
+  }
+
+  function getHour3(hour) {
+    return 3 * Math.floor(hour / 3); // siempre redondea hacia abajo al múltiplo de 3
   }
 
 </script>
