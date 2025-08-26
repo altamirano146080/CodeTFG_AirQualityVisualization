@@ -490,15 +490,19 @@ const layerProperties = {
     const dates = horasDisponibles;
 
     const values = await Promise.all(
-      dates.map(date => getValueFromLayer(map, layerName, latlng, date))
+      dates.map(date => {
+        const fecha = new Date(date);
+        if(region === 'global') {
+          const h3 = getHour3(fecha.getUTCHours());
+          fecha.setUTCHours(h3, 0, 0, 0);
+        }
+        return getValueFromLayer(map, layerName, latlng, fecha.toISOString());
+      })
     );
 
     return dates.map((date, i) => {
       const result = values[i];
-      return [
-        Date.parse(date),
-        result && result.value !== null ? result.value : null
-      ];
+      return [ Date.parse(date), result && result.value !== null ? result.value : null ];
     });
   }
 
