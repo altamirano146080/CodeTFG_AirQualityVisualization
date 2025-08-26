@@ -21,7 +21,7 @@
     height: 400px;
     position: absolute;  
     top: 120px;            
-    left: 720px;          
+    left: 920px;          
     z-index: 1000;        
     background-color: white; 
     border: 1px solid #ccc;  
@@ -58,10 +58,14 @@
 <div id="info">Haz clic en el mapa para ver el valor aquí.</div>
 
 <div id="chartContainer"></div>
+<div id="legend-container" style="position:absolute;  top:120px; left:720px; z-index:1000;"></div>
+
 
 <!-- Leaflet JS -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
 
 <script>
   // Contaminantes y leyendas
@@ -120,6 +124,164 @@
     }
   };
 
+const layerProperties = {
+  "PM2.5": {
+    levelMax: 200,
+    level70: 75,
+    level50: 40,
+    level30: 20,
+    levelMin: 0,
+    selectedPollutant: "PM2.5 (µg/m³)",
+    gradientCSS: "linear-gradient(#ef0081,#f93c3c,#ef8128,#e5ae2d,#e5db32,#9fe532,#50ef50,#00db00,#50a4f4,#2881ef,#1464d1,#ffffff)"
+  },
+  "PM10": {
+    levelMax: 200,
+    level70: 75,
+    level50: 40,
+    level30: 20,
+    levelMin: 0,
+    selectedPollutant: "PM10 (µg/m³)",
+    gradientCSS: "linear-gradient(#ef0081,#f93c3c,#ef8128,#e5ae2d,#e5db32,#9fe532,#50ef50,#00db00,#50a4f4,#2881ef,#1464d1,#ffffff)"
+  },
+  "NO2": {
+    levelMax: 191.25,
+    level70: 23.52,
+    level50: 1.91,
+    level30: 0.38,
+    levelMin: 0.02,
+    selectedPollutant: "NO2 (µg/m³)",
+    gradientCSS: "linear-gradient(#5e1316,#af000e,#e21e1f,#ee8239,#f5b532,#fecf38,#fff49b,#9fca70,#4db35f,#009273,#005ca1,#007dc1,#039fe1,#90c7e7)"
+  },
+  "SO2": {
+    levelMax: 1130.45,
+    level70: 199.57,
+    level50: 26.61,
+    level30: 3.99,
+    levelMin: 0.03,
+    selectedPollutant: "SO2 (µg/m³)",
+    gradientCSS: "linear-gradient(#5e1316,#af000e,#e21e1f,#ee8239,#f5b532,#fecf38,#fff49b,#9fca70,#4db35f,#009273,#005ca1,#007dc1,#039fe1)"
+  },
+  "CH4": {
+    levelMax: 6660,
+    level70: 1305,
+    level50: 1275,
+    level30: 1225,
+    levelMin: 1185,
+    selectedPollutant: "CH4 (µg/m³)",
+    gradientCSS: "linear-gradient(#66001E,#BE0004,#DA0000,#F40000,#FF5D00,#FFB500,#F8DA00,#DCF400,#84FF00,#00FA00,#00DA00,#00BD00,#009C00,#00A773,#00AAA0,#009FCB,#0085DD,#0041DD,#0000C9,#2D00A4,#850096,#680177,#0C0C0C)"
+  },
+  "O3": {
+    levelMax: 299.36,
+    level70: 189.59,
+    level50: 139.70,
+    level30: 99.79,
+    levelMin: 0,
+    selectedPollutant: "O3 (µg/m³)",
+    gradientCSS: "linear-gradient(#5e1316,#af000e,#e21e1f,#ee8239,#f5b532,#fecf38,#fff49b,#9fca70,#4db35f,#009273,#005ca1,#007dc1,#039fe1)"
+  },
+  "CO": {
+    levelMax: 3492.60,
+    level70: 232.84,
+    level50: 174.66,
+    level30: 116.42,
+    levelMin: 0,
+    selectedPollutant: "CO (µg/m³)",
+    gradientCSS: "linear-gradient(#5e1316,#af000e,#e21e1f,#ee8239,#f5b532,#fecf38,#fff49b,#9fca70,#4db35f,#009273,#005ca1,#007dc1,#039fe1,#90c7e7)"
+  },
+  "CO2": {
+    levelMax: 841,
+    level70: 760,
+    level50: 738,
+    level30: 705,
+    levelMin: 329,
+    selectedPollutant: "CO2 (µg/m³)",
+    gradientCSS: "linear-gradient(#66001E,#BE0004,#DA0000,#F40000,#FF5D00,#FFB500,#F8DA00,#DCF400,#84FF00,#00FA00,#00DA00,#00BD00,#009C00,#00A773,#00AAA0,#009FCB,#0085DD,#0041DD,#0000C9,#2D00A4,#850096,#680177,#0C0C0C)"
+  },
+  "UV INDEX": {
+    levelMax: 15,
+    level70: 10,
+    level50: 7,
+    level30: 4,
+    levelMin: 0,
+    selectedPollutant: "UV INDEX",
+    gradientCSS: "linear-gradient(#4adbff,#7bd9ff,#847db5,#b565a5,#e62484,#e63510,#e66900,#ef8a00,#f7b200,#ffd700,#fff300,#a5c600,#42a631,#bfbfbf)"
+  },
+  "PM10 EU": {
+    levelMax: 200,
+    level70: 75,
+    level50: 40,
+    level30: 20,
+    levelMin: 0,
+    selectedPollutant: "PM10 (µg/m³)",
+    gradientCSS: "linear-gradient(#ef0081,#fa3c3c,#e68127,#e5af2d,#e5dc31,#9fe531,#50ef50,#00dc00,#50a4f4,#2781ef,#1363d1,#dcdcdc)"
+  },
+  "NO2 EU": {
+    levelMax: 200,
+    level70: 75,
+    level50: 40,
+    level30: 20,
+    levelMin: 0,
+    selectedPollutant: "NO2 (µg/m³)",
+    gradientCSS: "linear-gradient(#ef0081,#fa3c3c,#e68127,#e5af2d,#e5dc31,#9fe531,#50ef50,#00dc00,#50a4f4,#2781ef,#1363d1,#dcdcdc)"
+  },
+  "SO2 EU": {
+    levelMax: 200,
+    level70: 75,
+    level50: 40,
+    level30: 20,
+    levelMin: 0,
+    selectedPollutant: "SO2 (µg/m³)",
+    gradientCSS: "linear-gradient(#ef0081,#fa3c3c,#e68127,#e5af2d,#e5dc31,#9fe531,#50ef50,#00dc00,#50a4f4,#2781ef,#1363d1,#dcdcdc)"
+  },
+  "O3 EU": {
+    levelMax: 240,
+    level70: 160,
+    level50: 120,
+    level30: 80,
+    levelMin: 0,
+    selectedPollutant: "O3 (µg/m³)",
+    gradientCSS: "linear-gradient(#ef0081,#fa3c3c,#e68127,#e5af2d,#e5dc31,#9fe531,#50ef50,#00dc00,#50a4f4,#2781ef,#1363d1,#dcdcdc)"
+  },
+  "CO EU": {
+    levelMax: 1000,
+    level70: 400,
+    level50: 300,
+    level30: 200,
+    levelMin: 0,
+    selectedPollutant: "CO (µg/m³)",
+    gradientCSS: "linear-gradient(#ef0081,#fa3c3c,#e68127,#e5af2d,#e5dc31,#9fe531,#50ef50,#00dc00,#50a4f4,#2781ef,#1363d1,#dcdcdc)"
+  },
+  "PM2.5 EU": {
+    levelMax: 200,
+    level70: 75,
+    level50: 40,
+    level30: 20,
+    levelMin: 0,
+    selectedPollutant: "PM2.5 (µg/m³)",
+    gradientCSS: "linear-gradient(#ef0081,#fa3c3c,#e68127,#e5af2d,#e5dc31,#9fe531,#50ef50,#00dc00,#50a4f4,#2781ef,#1363d1,#dcdcdc)"
+  },
+  "DUST EU": {
+    levelMax: 200,
+    level70: 75,
+    level50: 30,
+    level30: 10,
+    levelMin: 0,
+    selectedPollutant: "DUST (µg/m³)",
+    gradientCSS: "linear-gradient(#852716,#aa4211,#d05d0c,#e18621,#edb43d,#f5d363,#fae88e,#ebeeb3,#bfdfcd,#a0d5e3,#b3dfeb,#c6e9f3)"
+  },
+  "NH3 EU": {
+    levelMax: 10,
+    level70: 1.5,
+    level50: 0.1,
+    level30: 0.01,
+    levelMin: 0,
+    selectedPollutant: "NH3 (µg/m³)",
+    gradientCSS: "linear-gradient(#EF0081,#FA3C3C,#E68127,#E5AF2D,#E5DC31,#9FE531,#50EF50,#00DC00,#50A4F4,#2781EF,#1363D1,#DCDCDC)"
+  }
+  };
+
+
+
   function getLayerStyleByType(name){
     const styleMap={
       'PM2.5 EU':'sh_pm2p5_surface_concentration','PM10 EU':'sh_pm10_surface_concentration',
@@ -133,6 +295,40 @@
       'UV INDEX':'sh_all_uvindex'
     };
     return styleMap[name]||'';
+  }
+
+  function convertPollutantValue(pollutant, rawValue) {
+    let value = parseFloat(rawValue);
+    let unit = "µg/m³"; 
+
+    if (isNaN(value)) return { value: null, unit: "" };
+
+    console.log(`ANTES (${pollutant}):`, rawValue); // valor crudo de la capa
+
+    switch (pollutant) {
+      case "NO2": value = value * 1.9125; break;
+      case "SO2": value = value * 2.6609; break;
+      case "CO":  value = value * 1.1642; break;
+      case "CO2": value = value * 1.829; break;
+      case "CH4": value = value * 0.666; break;
+      case "O3":  value = value * 1.9957; break;
+      case "PM2.5":
+      case "PM10":
+      case "NO2 EU":
+      case "SO2 EU":
+      case "CO EU":
+      case "O3 EU":
+      case "PM2.5 EU":
+      case "PM10 EU":
+      case "DUST EU":
+        value = value * 1; break;
+      case "NH3 EU": value = Math.round(value * 100) / 100; break;
+      case "UV INDEX": unit = ""; break;
+    }
+
+    console.log(`DESPUÉS (${pollutant}):`, value, unit); // valor convertido
+
+    return { value: Math.round(value * 100) / 100, unit };
   }
 
   const regionCenters = { europa:[52.52,13.405], global:[20,0] };
@@ -178,42 +374,47 @@
   });
 
   function actualizarCapa() {
-      const region = regionSelect.value;
-      const contaminante = contaminanteSelect.value;
-      const horaIndex = parseInt(sliderHora.value);
-      if (!contaminante) return;
+    const region = regionSelect.value;
+    const contaminante = contaminanteSelect.value;
+    const horaIndex = parseInt(sliderHora.value);
+    if (!contaminante) return;
 
-      if (wmsLayer) map.removeLayer(wmsLayer);
+    if (wmsLayer) map.removeLayer(wmsLayer);
 
-      let fecha = new Date(horasDisponibles[horaIndex]);
+    // fecha real (lo que selecciona el slider)
+    const fechaReal = new Date(horasDisponibles[horaIndex]);
 
-      // si la región es global, redondeamos hora al múltiplo de 3
-      if (region === 'global') {
-          const h = getHour3(fecha.getUTCHours());
-          fecha.setUTCHours(h, 0, 0, 0);
-      }
+    // fecha de petición (redondeada si es global)
+    const fechaPeticion = new Date(fechaReal);
+    if (region === 'global') {
+        const h = getHour3(fechaPeticion.getUTCHours());
+        fechaPeticion.setUTCHours(h, 0, 0, 0);
+    }
 
-      const timeISO = fecha.toISOString();
-      const wmsUrl = wmsInfo[region].url;
-      const layerName = wmsInfo[region].layers[contaminante];
-      const styleName = getLayerStyleByType(contaminante);
+    const timeISO = fechaPeticion.toISOString();
+    const wmsUrl = wmsInfo[region].url;
+    const layerName = wmsInfo[region].layers[contaminante];
+    const styleName = getLayerStyleByType(contaminante);
 
-      wmsLayer = L.tileLayer.wms(wmsUrl, {
-          layers: layerName,
-          format: 'image/png',
-          transparent: true,
-          opacity: 0.6,
-          time: timeISO,
-          attribution: 'CAMS - Copernicus Atmosphere Monitoring Service'
-      }).addTo(map);
+    wmsLayer = L.tileLayer.wms(wmsUrl, {
+        layers: layerName,
+        format: 'image/png',
+        transparent: true,
+        opacity: 0.6,
+        time: timeISO,
+        attribution: 'CAMS - Copernicus Atmosphere Monitoring Service'
+    }).addTo(map);
 
-      if (styleName) {
-          wmsLayer.setParams({ styles: styleName });
-      }
+    if (styleName) {
+        wmsLayer.setParams({ styles: styleName });
+    }
 
-      const label = fecha.toLocaleDateString('es-ES', { weekday: 'short', day: 'numeric' });
-      leyendaDiv.textContent = `Leyenda: ${leyendas[contaminante]} (Hora UTC: ${fecha.getUTCHours()}:00)`;
-      horaLabel.textContent = label;
+    // Leyenda → usamos la fecha REAL
+    const label = fechaReal.toLocaleDateString('es-ES', { weekday: 'short', day: 'numeric' });
+    leyendaDiv.textContent = `Leyenda: ${leyendas[contaminante]} (Hora UTC: ${fechaReal.getUTCHours()}:00)`;
+    horaLabel.textContent = label;
+
+    renderLegend(contaminante);
   }
 
   function actualizarContaminantes(){
@@ -244,37 +445,61 @@
   regionSelect.addEventListener('change',actualizarContaminantes);
   contaminanteSelect.addEventListener('change',actualizarCapa);
 
-  map.on('click',async e=>{
-    const {lat,lng}=e.latlng;
-    const contaminante=contaminanteSelect.value;
-    const valorReal=await getValueFromLayer(map,wmsInfo[regionSelect.value].layers[contaminante],e.latlng,horasDisponibles[sliderHora.value]);
-    infoDiv.textContent=`Valor en (${lat.toFixed(3)}, ${lng.toFixed(3)}): ${valorReal} μg/m³`;
-    const datosHistoricos=await getHistoricalDataForPollutant(e.latlng);
+  map.on('click', async e => {
+    const { lat, lng } = e.latlng;
+    const contaminante = contaminanteSelect.value;
+    const resultado = await getValueFromLayer(map, wmsInfo[regionSelect.value].layers[contaminante], e.latlng, horasDisponibles[sliderHora.value]);
+
+    if (resultado && resultado.value !== null) {
+      infoDiv.textContent = `Valor en (${lat.toFixed(3)}, ${lng.toFixed(3)}): ${resultado.value} ${resultado.unit}`;
+    } else {
+      infoDiv.textContent = `Valor en (${lat.toFixed(3)}, ${lng.toFixed(3)}): No disponible`;
+    }
+
+    const datosHistoricos = await getHistoricalDataForPollutant(e.latlng);
     plotPollutantHistory(datosHistoricos);
   });
 
   actualizarContaminantes();
 
-  async function getValueFromLayer(map,layer,latlng,date){
-    const location=`${latlng.lng},${latlng.lat},${latlng.lng},${latlng.lat}`;
-    const url="https://eccharts.ecmwf.int/wms/?token=public&request=GetCapabilities&request=GetFeatureInfo&version=1.3.0&version=1.1.1&service=WMS&layers="+layer
-      +"&styles=&format=image/jpeg&transparent=true&tiled=true&time="+date+"&width=1660&height=807&srs=EPSG:4326&bbox="+location+"&query_layers="+layer+"&X=0&Y=0";
-    try{
-      const response=await fetch(url);
-      const text=await response.text();
-      let value=text.split("\n")[3]?.replace("Value: ","").split(" ")[0]||null;
-      if(value===null||value.includes("ServiceExceptionReport")) value="No disponible";
-      return value;
-    }catch(e){console.error(e); return null;}
+  async function getValueFromLayer(map, layer, latlng, date) {
+    const location = `${latlng.lng},${latlng.lat},${latlng.lng},${latlng.lat}`;
+    const url = "https://eccharts.ecmwf.int/wms/?token=public&request=GetCapabilities&request=GetFeatureInfo&version=1.3.0&version=1.1.1&service=WMS&layers=" + layer
+      + "&styles=&format=image/jpeg&transparent=true&tiled=true&time=" + date + "&width=1660&height=807&srs=EPSG:4326&bbox=" + location + "&query_layers=" + layer + "&X=0&Y=0";
+
+    try {
+      const response = await fetch(url);
+      const text = await response.text();
+      let rawValue = text.split("\n")[3]?.replace("Value: ", "").split(" ")[0] || null;
+      if (!rawValue || rawValue.includes("ServiceExceptionReport")) return null;
+
+      // aplicar conversión
+      const pollutant = contaminanteSelect.value;
+      const { value, unit } = convertPollutantValue(pollutant, rawValue);
+      return { value, unit };
+    } catch (e) {
+      console.error(e);
+      return null;
+    }
   }
 
-  async function getHistoricalDataForPollutant(latlng){
-    const region=regionSelect.value;
-    const contaminante=contaminanteSelect.value;
-    const layerName=wmsInfo[region].layers[contaminante];
-    const dates=horasDisponibles;
-    const values=await Promise.all(dates.map(date=>getValueFromLayer(map,layerName,latlng,date)));
-    return dates.map((date,i)=>[Date.parse(date),parseFloat(values[i]||0)]);
+  async function getHistoricalDataForPollutant(latlng) {
+    const region = regionSelect.value;
+    const contaminante = contaminanteSelect.value;
+    const layerName = wmsInfo[region].layers[contaminante];
+    const dates = horasDisponibles;
+
+    const values = await Promise.all(
+      dates.map(date => getValueFromLayer(map, layerName, latlng, date))
+    );
+
+    return dates.map((date, i) => {
+      const result = values[i];
+      return [
+        Date.parse(date),
+        result && result.value !== null ? result.value : null
+      ];
+    });
   }
 
   function plotPollutantHistory(data){
@@ -285,7 +510,16 @@
       yAxis:{title:{text:'Concentración (μg/m³)'},min:0},
       tooltip:{xDateFormat:'%Y-%m-%d %H:%M',pointFormat:'<b>{point.y}</b> μg/m³'},
       series:[{name:contaminanteSelect.value,data:data,turboThreshold:0}],
-      credits:{enabled:false}, exporting:{enabled:true}, accessibility:{enabled:false}
+      credits:{enabled:false},
+      exporting:{
+        enabled:true,       // habilita el menú de exportación
+        buttons: {
+          contextButton: {
+            menuItems: ['downloadCSV','downloadXLS']  // agrega opciones CSV/XLS
+          }
+        }
+      },
+      accessibility:{enabled:false}
     });
   }
 
@@ -293,6 +527,29 @@
     return 3 * Math.floor(hour / 3); // siempre redondea hacia abajo al múltiplo de 3
   }
 
+  function renderLegend(pollutant) {
+  const props = layerProperties[pollutant];
+  if (!props) {
+    document.getElementById("legend-container").innerHTML = "";
+    return;
+  }
+
+  const html = `
+    <div style="padding:10px; background:rgba(0,0,0,0.6); border-radius:8px; color:white; font-family:sans-serif; font-size:12px; width:120px;">
+      <div style="height:200px; width:20px; background:${props.gradientCSS}; border-radius:10px; float:left;"></div>
+      <div style="margin-left:28px; position:relative; height:200px;">
+        <div style="position:absolute; top:0;">≥ ${props.levelMax}</div>
+        <div style="position:absolute; top:40px;">${props.level70}</div>
+        <div style="position:absolute; top:80px;">${props.level50}</div>
+        <div style="position:absolute; top:120px;">${props.level30}</div>
+        <div style="position:absolute; bottom:0;">${props.levelMin}</div>
+      </div>
+      <div style="clear:both; margin-top:8px; font-weight:bold; text-align:center;">${props.selectedPollutant}</div>
+    </div>
+  `;
+
+  document.getElementById("legend-container").innerHTML = html;
+  }
 </script>
 </body>
 </html>

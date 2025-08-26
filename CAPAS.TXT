@@ -1,0 +1,726 @@
+Layer:
+  Name:   z500_field
+  Title:  500 hPa geopotential
+  Units:  N/A
+  Time:   2025-08-19T12:00:00Z,2025-08-19T15:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   z500_public
+  Title:  500 hPa geopotential (Public)
+  Units:  N/A
+  Time:   2025-08-19T12:00:00Z,2025-08-20T00:00:00Z/2025-09-...
+----------------------------------------
+Layer:
+  Name:   t850_public
+  Title:  850 hPa temperature (Public)
+  Units:  N/A
+  Time:   2025-08-19T12:00:00Z,2025-08-20T00:00:00Z/2025-09-...
+----------------------------------------
+Layer:
+  Name:   850ws
+  Title:  850 hPa wind speed
+  Units:  N/A
+  Time:   2025-08-19T12:00:00Z,2025-08-19T15:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   ws850_public
+  Title:  850 hPa wind speed (Public)
+  Units:  N/A
+  Time:   2025-08-19T12:00:00Z,2025-08-20T00:00:00Z/2025-09-...
+----------------------------------------
+Layer:
+  Name:   composition_aod550
+  Title:  Aerosol optical depth at 550 nm (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_pol_alder_forecast_surface
+  Title:  Alder pollen (provided by CAMS)
+  Units:  N/A
+  Time:   2025-07-26T00:00:00Z,2025-07-26T01:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_pol_alder_forecast_surface_eea
+  Title:  Alder pollen (provided by CAMS)
+  Units:  N/A
+  Time:   2025-07-26T00:00:00Z,2025-07-26T01:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_nh3_forecast_surface
+  Title:  Ammonia (provided by CAMS)
+  Units:  N/A
+  Time:   2025-07-26T00:00:00Z,2025-07-26T01:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   background
+  Title:  Background
+  Units:  N/A
+  Time:   N/A
+----------------------------------------
+Layer:
+  Name:   composition_bbaod550
+  Title:  Biomass burning aerosol optical depth at 550 nm (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_pol_birch_forecast_surface
+  Title:  Birch pollen (provided by CAMS)
+  Units:  N/A
+  Time:   2025-07-26T00:00:00Z,2025-07-26T01:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_pol_birch_forecast_surface_eea
+  Title:  Birch pollen (provided by CAMS)
+  Units:  N/A
+  Time:   2025-07-26T00:00:00Z,2025-07-26T01:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   boundaries
+  Title:  Boundaries
+  Units:  N/A
+  Time:   N/A
+----------------------------------------
+Layer:
+  Name:   composition_co2_300hpa
+  Title:  Carbon dioxide at 300 hPa [ ppmv ] (provided by CAMS)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_co2_50hpa
+  Title:  Carbon dioxide at 50 hPa [ ppmv ] (provided by CAMS)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_co2_500hpa
+  Title:  Carbon dioxide at 500 hPa [ ppmv ] (provided by CAMS)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_co2_850hpa
+  Title:  Carbon dioxide at 850 hPa [ ppmv ] (provided by CAMS)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_co2_surface
+  Title:  Carbon dioxide at surface [ ppmv ] (provided by CAMS)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_co2_totalcolumn
+  Title:  Carbon dioxide column-mean molar fraction [ ppmv ] (provided by CAMS)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_co_forecast_surface
+  Title:  Carbon monoxide (provided by CAMS)
+  Units:  N/A
+  Time:   2025-07-26T00:00:00Z,2025-07-26T01:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_co_300hpa
+  Title:  Carbon monoxide at 300 hPa [ppbv] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_co_50hpa
+  Title:  Carbon monoxide at 50 hPa [ppbv] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_co_500hpa
+  Title:  Carbon monoxide at 500 hPa [ppbv] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_co700
+  Title:  Carbon monoxide at 700 hPa (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_co_850hpa
+  Title:  Carbon monoxide at 850 hPa [ppbv] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_co_upperlevel
+  Title:  Carbon monoxide at pressure levels (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_co_surface
+  Title:  Carbon monoxide at surface [ppbv] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_uvindex_clearsky_daily_max
+  Title:  Clear sky UV index (provided by CAMS)
+  Units:  N/A
+  Time:   2025-06-26T00:00:00Z,2025-06-27T00:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_uvindex_clearsky
+  Title:  Clear-sky UV index (provided by CAMS)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_dust_forecast_surface
+  Title:  Dust (provided by CAMS)
+  Units:  N/A
+  Time:   2025-07-26T00:00:00Z,2025-07-26T01:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_duaod550
+  Title:  Dust aerosol optical depth at 550 nm (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   z500_mean_public
+  Title:  Ensemble mean for 500 hPa geopotential (Public)
+  Units:  N/A
+  Time:   2025-08-19T12:00:00Z,2025-08-20T00:00:00Z/2025-09-...
+----------------------------------------
+Layer:
+  Name:   t850_mean_public
+  Title:  Ensemble mean for 850 hPa temperature (Public)
+  Units:  N/A
+  Time:   2025-08-19T12:00:00Z,2025-08-20T00:00:00Z/2025-09-...
+----------------------------------------
+Layer:
+  Name:   ws850_mean_public
+  Title:  Ensemble mean for 850 hPa wind speed (Public)
+  Units:  N/A
+  Time:   2025-08-19T12:00:00Z,2025-08-20T00:00:00Z/2025-09-...
+----------------------------------------
+Layer:
+  Name:   msl_mean_public
+  Title:  Ensemble mean for mean sea level pressure (Public)
+  Units:  N/A
+  Time:   2025-08-19T12:00:00Z,2025-08-20T00:00:00Z/2025-09-...
+----------------------------------------
+Layer:
+  Name:   z500_spread_public
+  Title:  Ensemble spread for 500 hPa geopotential (Public)
+  Units:  N/A
+  Time:   2025-08-19T12:00:00Z,2025-08-20T00:00:00Z/2025-09-...
+----------------------------------------
+Layer:
+  Name:   t850_spread_public
+  Title:  Ensemble spread for 850 hPa temperature (Public)
+  Units:  N/A
+  Time:   2025-08-19T12:00:00Z,2025-08-20T00:00:00Z/2025-09-...
+----------------------------------------
+Layer:
+  Name:   ws850_spread_public
+  Title:  Ensemble spread for 850 hPa wind speed (Public)
+  Units:  N/A
+  Time:   2025-08-19T12:00:00Z,2025-08-20T00:00:00Z/2025-09-...
+----------------------------------------
+Layer:
+  Name:   msl_spread
+  Title:  Ensemble spread for mean sea level pressure
+  Units:  N/A
+  Time:   2025-08-19T12:00:00Z,2025-08-19T15:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   msl_spread_public
+  Title:  Ensemble spread for mean sea level pressure (Public)
+  Units:  N/A
+  Time:   2025-08-19T12:00:00Z,2025-08-20T00:00:00Z/2025-09-...
+----------------------------------------
+Layer:
+  Name:   composition_fire
+  Title:  Fire radiative power [W m-2] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-21T00:00:00Z,2025-08-22T00:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   foreground
+  Title:  Foreground
+  Units:  N/A
+  Time:   N/A
+----------------------------------------
+Layer:
+  Name:   composition_europe_hcho_forecast_surface
+  Title:  Formaldehyde (provided by CAMS)
+  Units:  N/A
+  Time:   2025-07-26T00:00:00Z,2025-07-26T01:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_hcho_300hpa
+  Title:  Formaldehyde at 300 hPa [ppbv] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_hcho_50hpa
+  Title:  Formaldehyde at 50 hPa [ppbv] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_hcho_500hpa
+  Title:  Formaldehyde at 500 hPa [ppbv] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_hcho_850hpa
+  Title:  Formaldehyde at 850 hPa [ppbv] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_hcho_surface
+  Title:  Formaldehyde at surface [ppbv] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_ochcho_forecast_surface
+  Title:  Glyoxal (provided by CAMS)
+  Units:  N/A
+  Time:   2025-07-26T00:00:00Z,2025-07-26T01:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_pol_grass_forecast_surface
+  Title:  Grass pollen (provided by CAMS)
+  Units:  N/A
+  Time:   2025-07-26T00:00:00Z,2025-07-26T01:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_pol_grass_forecast_surface_eea
+  Title:  Grass pollen (provided by CAMS)
+  Units:  N/A
+  Time:   2025-07-26T00:00:00Z,2025-07-26T01:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   grid
+  Title:  Grid
+  Units:  N/A
+  Time:   N/A
+----------------------------------------
+Layer:
+  Name:   composition_europe_ec_res_forecast_surface
+  Title:  Ground-level residential elementary carbon (provided by CAMS)
+  Units:  N/A
+  Time:   2025-07-26T00:00:00Z,2025-07-26T01:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   genesis_hr
+  Title:  Hurricane strike probability
+  Units:  N/A
+  Time:   2025-08-22T12:00:00Z,2025-08-23T00:00:00Z/2025-09-...
+----------------------------------------
+Layer:
+  Name:   msl
+  Title:  Mean sea level pressure
+  Units:  N/A
+  Time:   2025-08-19T12:00:00Z,2025-08-19T15:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   msl_public
+  Title:  Mean sea level pressure (Public)
+  Units:  N/A
+  Time:   2025-08-19T12:00:00Z,2025-08-20T00:00:00Z/2025-09-...
+----------------------------------------
+Layer:
+  Name:   composition_ch4_300hpa
+  Title:  Methane at 300 hPa [ ppbv ] (provided by CAMS)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_ch4_50hpa
+  Title:  Methane at 50 hPa [ ppbv ] (provided by CAMS)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_ch4_500hpa
+  Title:  Methane at 500 hPa [ ppbv ] (provided by CAMS)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_ch4_850hpa
+  Title:  Methane at 850 hPa [ ppbv ] (provided by CAMS)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_ch4_surface
+  Title:  Methane at surface [ ppbv ] (provided by CAMS)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_ch4_totalcolumn
+  Title:  Methane column-mean molar fraction [ ppbv ] (provided by CAMS)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_pol_mugwort_forecast_surface
+  Title:  Mugwort pollen (provided by CAMS)
+  Units:  N/A
+  Time:   2025-07-26T00:00:00Z,2025-07-26T01:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_pol_mugwort_forecast_surface_eea
+  Title:  Mugwort pollen (provided by CAMS)
+  Units:  N/A
+  Time:   2025-07-26T00:00:00Z,2025-07-26T01:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   named_cyclones
+  Title:  Named cyclones (Name and positions only)
+  Units:  N/A
+  Time:   2025-08-19T12:00:00Z,2025-08-19T18:00:00Z/2025-09-...
+----------------------------------------
+Layer:
+  Name:   named_cyclones_tracks
+  Title:  Named cyclones tracks
+  Units:  N/A
+  Time:   2025-08-19T12:00:00Z,2025-08-19T18:00:00Z/2025-09-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_no2_forecast_surface
+  Title:  Nitrogen dioxide (provided by CAMS)
+  Units:  N/A
+  Time:   2025-07-26T00:00:00Z,2025-07-26T01:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_no2_300hpa
+  Title:  Nitrogen dioxide at 300 hPa [ppbv] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_no2_50hpa
+  Title:  Nitrogen dioxide at 50 hPa [ppbv] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_no2_500hpa
+  Title:  Nitrogen dioxide at 500 hPa [ppbv] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_no2_850hpa
+  Title:  Nitrogen dioxide at 850 hPa [ppbv] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_no2_surface
+  Title:  Nitrogen dioxide at surface [ppbv] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_no2_analysis_surface
+  Title:  Nitrogen dioxide at surface [ug/m3] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2022-11-28T00:00:00Z,2022-11-29T00:00:00Z/2023-01-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_no_forecast_surface
+  Title:  Nitrogen monoxide (provided by CAMS)
+  Units:  N/A
+  Time:   2025-07-26T00:00:00Z,2025-07-26T01:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_nmvoc_forecast_surface
+  Title:  Non methane vocs (provided by CAMS)
+  Units:  N/A
+  Time:   2025-07-26T00:00:00Z,2025-07-26T01:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_pol_olive_forecast_surface
+  Title:  Olive pollen (provided by CAMS)
+  Units:  N/A
+  Time:   2025-07-26T00:00:00Z,2025-07-26T01:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_pol_olive_forecast_surface_eea
+  Title:  Olive pollen (provided by CAMS)
+  Units:  N/A
+  Time:   2025-07-26T00:00:00Z,2025-07-26T01:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_o3_forecast_surface
+  Title:  Ozone (provided by CAMS)
+  Units:  N/A
+  Time:   2025-07-26T00:00:00Z,2025-07-26T01:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_o3_300hpa
+  Title:  Ozone at 300 hPa [ppbv] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_o3_50hpa
+  Title:  Ozone at 50 hPa [ppbv] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_o3_500hpa
+  Title:  Ozone at 500 hPa [ppbv] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_o3_850hpa
+  Title:  Ozone at 850 hPa [ppbv] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_o3sfc
+  Title:  Ozone at surface (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   N/A
+----------------------------------------
+Layer:
+  Name:   composition_o3_surface
+  Title:  Ozone at surface [ppbv] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_o3_analysis_surface
+  Title:  Ozone at surface [μg/m3] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2022-11-28T00:00:00Z,2022-11-29T00:00:00Z/2023-01-...
+----------------------------------------
+Layer:
+  Name:   composition_pm10
+  Title:  PM10 - coarse particulate matter [ug / m3] (provided by CAMS)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_pm2p5
+  Title:  PM2.5 - fine particulate matter [ug / m3] (provided by CAMS)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_pm10_analysis_surface
+  Title:  Particulate matter < 10 μm [μg/m3] (provided by CAMS)
+  Units:  N/A
+  Time:   2022-11-28T00:00:00Z,2022-11-29T00:00:00Z/2023-01-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_pm2p5_analysis_surface
+  Title:  Particulate matter < 2.5 μm [μg/m3] (provided by CAMS)
+  Units:  N/A
+  Time:   2022-11-28T00:00:00Z,2022-11-29T00:00:00Z/2023-01-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_pans_forecast_surface
+  Title:  Peroxyacyl nitrates (provided by CAMS)
+  Units:  N/A
+  Time:   2025-07-26T00:00:00Z,2025-07-26T01:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_pm10_forecast_surface
+  Title:  Pm10 (provided by CAMS)
+  Units:  N/A
+  Time:   2025-07-26T00:00:00Z,2025-07-26T01:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_pm_ss_forecast_surface
+  Title:  Pm10 sea salt dry (provided by CAMS)
+  Units:  N/A
+  Time:   2025-07-26T00:00:00Z,2025-07-26T01:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_pm_wf_forecast_surface
+  Title:  Pm10 wildfires (provided by CAMS)
+  Units:  N/A
+  Time:   2025-07-26T00:00:00Z,2025-07-26T01:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_pm2p5_forecast_surface
+  Title:  Pm2.5 (provided by CAMS)
+  Units:  N/A
+  Time:   2025-07-26T00:00:00Z,2025-07-26T01:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_ec_ff_forecast_surface
+  Title:  Pm2.5 anthropogenic fossil fuel carbon at surface [ug/m3] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   N/A
+----------------------------------------
+Layer:
+  Name:   composition_europe_ec_wb_forecast_surface
+  Title:  Pm2.5 anthropogenic wood burning carbon at surface [ug/m3] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   N/A
+----------------------------------------
+Layer:
+  Name:   composition_europe_pm_om_forecast_surface
+  Title:  Pm2.5 total organic matter (provided by CAMS)
+  Units:  N/A
+  Time:   2025-07-26T00:00:00Z,2025-07-26T01:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_pol_ragw_forecast_surface
+  Title:  Ragweed pollen (provided by CAMS)
+  Units:  N/A
+  Time:   2025-07-26T00:00:00Z,2025-07-26T01:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_pol_ragw_forecast_surface_eea
+  Title:  Ragweed pollen (provided by CAMS)
+  Units:  N/A
+  Time:   2025-07-26T00:00:00Z,2025-07-26T01:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_ec_resid_forecast_surface
+  Title:  Residential elementary carbon (provided by CAMS)
+  Units:  N/A
+  Time:   2025-07-26T00:00:00Z,2025-07-26T01:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   rivers
+  Title:  Rivers and lakes
+  Units:  N/A
+  Time:   N/A
+----------------------------------------
+Layer:
+  Name:   composition_ssaod550
+  Title:  Sea salt aerosol optical depth at 550 nm (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_sia_forecast_surface
+  Title:  Secondary inorganic aerosol (provided by CAMS)
+  Units:  N/A
+  Time:   2025-07-26T00:00:00Z,2025-07-26T01:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_suaod550
+  Title:  Sulphate aerosol optical depth at 550 nm (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_so2_forecast_surface
+  Title:  Sulphur dioxide (provided by CAMS)
+  Units:  N/A
+  Time:   2025-07-26T00:00:00Z,2025-07-26T01:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_so2_300hpa
+  Title:  Sulphur dioxide at 300 hPa [ppbv] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_so2_50hpa
+  Title:  Sulphur dioxide at 50 hPa [ppbv] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_so2_500hpa
+  Title:  Sulphur dioxide at 500 hPa [ppbv] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_so2_850hpa
+  Title:  Sulphur dioxide at 850 hPa [ppbv] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_so2_surface
+  Title:  Sulphur dioxide at surface [ppbv] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_co_totalcolumn
+  Title:  Total column of carbon monoxide [10^18 molecules / cm2] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_hcho_totalcolumn
+  Title:  Total column of formaldehyde [10^15 molecules / cm2] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_no2_totalcolumn
+  Title:  Total column of nitrogen dioxide [10^15 molecules / cm2] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_o3_totalcolumn
+  Title:  Total column of ozone [DU] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_so2_totalcolumn
+  Title:  Total column of sulphur dioxide [10^15 molecules / cm2] (provided by CAMS, the Copernicus Atmosphere Monitoring Service)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_europe_ec_total_forecast_surface
+  Title:  Total elementary carbon (provided by CAMS)
+  Units:  N/A
+  Time:   2025-07-26T00:00:00Z,2025-07-26T01:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   composition_uvindex_daily_max
+  Title:  Total sky UV index (provided by CAMS)
+  Units:  N/A
+  Time:   2025-06-26T00:00:00Z,2025-06-27T00:00:00Z/2025-08-...
+----------------------------------------
+Layer:
+  Name:   genesis_td
+  Title:  Tropical cyclone strike probability
+  Units:  N/A
+  Time:   2025-08-22T12:00:00Z,2025-08-23T00:00:00Z/2025-09-...
+----------------------------------------
+Layer:
+  Name:   genesis_ts
+  Title:  Tropical storm strike probability
+  Units:  N/A
+  Time:   2025-08-22T12:00:00Z,2025-08-23T00:00:00Z/2025-09-...
+----------------------------------------
+Layer:
+  Name:   composition_uvindex
+  Title:  UV index (provided by CAMS)
+  Units:  N/A
+  Time:   2025-08-20T03:00:00Z,2025-08-20T06:00:00Z/2025-08-...
+----------------------------------------
