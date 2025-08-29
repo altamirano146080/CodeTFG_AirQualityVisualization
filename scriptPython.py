@@ -8,6 +8,7 @@ xml_content = response.content
 
 root = ET.fromstring(xml_content)
 
+
 ns = {'wms': 'http://www.opengis.net/wms'}
 
 layers = root.findall('.//wms:Layer/wms:Layer', ns)
@@ -26,3 +27,4 @@ for layer in layers:
     print(f"  Units:  {units.text if units is not None else 'N/A'}")
     print(f"  Time:   {dimension.text[:50] + '...'}" if dimension is not None else "  Time:   N/A")
     print("-" * 40)
+
